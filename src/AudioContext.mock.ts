@@ -4,6 +4,13 @@ Object.defineProperty(window, "AudioContext", {
     createOscillator: jest
       .fn()
       .mockImplementation(() => ({ connect: jest.fn() })),
+    createGain: jest.fn().mockImplementation(() => ({
+      connect: jest.fn(),
+      gain: {
+        linearRampToValueAtTime: jest.fn(),
+      },
+    })),
+    currentTime: 0,
   })),
 });
 
